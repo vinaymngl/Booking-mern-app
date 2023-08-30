@@ -12,7 +12,7 @@ router.get("/checkuser/:id", verifyUser, (req,res,next)=>{
     res.send("You are logged in and can delete your account")
 });
 router.get("/checkadmin/:id", verifyAdmin, (req,res,next)=>{
-    res.send("hello admin and can delete yuor account")
+    res.send("hello admin and can delete your account")
 })
 //UPDATE
 router.put("/:id" ,verifyUser, updateUser);
