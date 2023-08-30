@@ -24,9 +24,9 @@ const Header = ({ type }) => {
     }
   ]);
   const [options, setOptions] = useState({
-    adults: 1,
+    adults: 0,
     children: 0,
-    rooms: 1
+    rooms: 0
   })
 
   const navigate = useNavigate();
@@ -106,7 +106,7 @@ const Header = ({ type }) => {
                   <div className="optionItem">
                     <span className="optionText">Adults</span>
                     <div className="optionCounter">
-                      <button className="optionCounterButton" onClick={() => handleOption("adults", "d")} disabled={options.adults <= 1}>-</button>
+                      <button className="optionCounterButton" onClick={() => handleOption("adults", "d")} disabled={options.adults < 1}>-</button>
                       <span className="optionCounterNumber">{options.adults}</span>
                       <button className="optionCounterButton" onClick={() => handleOption("adults", "i")}>+</button>
                     </div>
@@ -122,7 +122,7 @@ const Header = ({ type }) => {
                   <div className="optionItem">
                     <span className="optionText">Room</span>
                     <div className="optionCounter">
-                      <button className="optionCounterButton" onClick={() => handleOption("rooms", "d")} disabled={options.rooms <= 1}>-</button>
+                      <button className="optionCounterButton" onClick={() => handleOption("rooms", "d")} disabled={options.rooms < 1}>-</button>
                       <span className="optionCounterNumber">{options.rooms}</span>
                       <button className="optionCounterButton" onClick={() => handleOption("rooms", "i")}>+</button>
                     </div>
