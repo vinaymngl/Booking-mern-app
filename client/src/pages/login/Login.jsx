@@ -1,9 +1,13 @@
 import axios from "axios";
-import { useContext, useState } from "react";
+import { useContext, useState} from "react";
+
 import { useNavigate } from "react-router-dom";
 import {AuthContext} from "../../context/AuthContext";
 import "./login.css";
-
+// import dotenv from "dotenv";
+import {GoogleLogin} from "react-google-login";
+// dotenv.config();
+ const GOOGLE_CLIENTID= "641466764873-he3foed6lqms8jfcfq0isp8p6de61pe6.apps.googleusercontent.com";
 const Login = () => {
   const [credentials, setCredentials] = useState({
     username: undefined,
@@ -51,6 +55,11 @@ const Login = () => {
         <button disabled={loading} onClick={handleClick} className="lButton">
           Login
         </button>
+        <GoogleLogin
+        clientId={GOOGLE_CLIENTID}
+        buttonText="Login with GOOGLE"
+        isSignedIn = {false}
+        />
         {error && <span>{error.message}</span>}
       </div>
     </div>

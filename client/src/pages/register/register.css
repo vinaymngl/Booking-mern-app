@@ -5,18 +5,24 @@
     justify-content: center;
   }
   
-  .lContainer {
+  .rContainer {
     display: flex;
     flex-direction: column;
     gap: 10px;
   }
   
-  .lInput{
+  .rInputLeft{
     height: 30px;
     padding: 10px;
+    margin-right: 10px;
+  }
+  .rInputRight{
+    height: 30px;
+    padding: 10px;
+    margin-left: 10px;
   }
   
-  .lButton {
+  .rButton {
     border: none;
     padding: 10px 20px;
     background-color: #0071c2;
@@ -37,4 +43,7 @@
   }
   .data{
     font: 10px solid red;
+  }
+  .nameContainer{
+    display: flex;
   }
