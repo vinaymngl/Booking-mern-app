@@ -40,3 +40,17 @@ export const login = async(req,res,next) =>{
         next(err);
     }
 }
+
+export const checkDetails = async(req,res,next)=>{
+    try{
+        const existingUser = await User.findOne({ email:req.query.email});
+        const existingUsername = await User.findOne({username:req.query.username});
+        // console.log([existingUser,existingUsername]);
+        res.status(200).send(!!existingUser || !!existingUsername)
+
+    }catch(err){
+        console.log(err);
+        next(err);
+
+    }
+}

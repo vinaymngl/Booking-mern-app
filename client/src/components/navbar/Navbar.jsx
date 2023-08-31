@@ -5,17 +5,21 @@ import { useContext } from "react";
 import { AuthContext } from "../../context/AuthContext";
 
 const Navbar = () => {
-  const {user} = useContext(AuthContext);
- 
+  const { user } = useContext(AuthContext);
+
   return (
     <div className="navbar">
       <div className="navContainer">
-        <Link to = "/" style={{color : "inherit",textDecoration : "none"}}>
+        <Link to="/" style={{ color: "inherit", textDecoration: "none" }}>
           <span className="logo">Booking</span>
-        </Link>  
-        {user ? user.username: <div className="navItems">
-          <button className="navButton">Register</button>
-          <button className="navButton">Login</button>
+        </Link>
+        {user ? user.username : <div className="navItems">
+          <Link to="/Register">
+            <button className="navButton">Register</button>
+          </Link>
+          <Link to="/Login">
+            <button className="navButton">Login</button>
+          </Link>
         </div>}
       </div>
     </div>
