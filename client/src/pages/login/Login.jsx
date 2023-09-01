@@ -4,7 +4,6 @@ import { useNavigate } from "react-router-dom";
 import {AuthContext} from "../../context/AuthContext";
 import "./login.css";
 import {GoogleLogin} from "react-google-login";
- const GOOGLE_CLIENTID= "641466764873-he3foed6lqms8jfcfq0isp8p6de61pe6.apps.googleusercontent.com";
 const Login = () => {
   const [credentials, setCredentials] = useState({
     username: undefined,
