@@ -1,12 +1,9 @@
 import axios from "axios";
 import { useContext, useState} from "react";
-
 import { useNavigate } from "react-router-dom";
 import {AuthContext} from "../../context/AuthContext";
 import "./login.css";
-// import dotenv from "dotenv";
 import {GoogleLogin} from "react-google-login";
-// dotenv.config();
  const GOOGLE_CLIENTID= "641466764873-he3foed6lqms8jfcfq0isp8p6de61pe6.apps.googleusercontent.com";
 const Login = () => {
   const [credentials, setCredentials] = useState({
@@ -16,7 +13,7 @@ const Login = () => {
 
   const { loading, error, dispatch } = useContext(AuthContext);
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     setCredentials((prev) => ({ ...prev, [e.target.id]: e.target.value }));
@@ -33,6 +30,14 @@ const Login = () => {
       dispatch({ type: "LOGIN_FAILURE", payload: err.response.data });
     }
   };
+
+  const onSuccess = (res)=>{
+    console.log("LOGIN success! current user:",res.profileObj)
+  }
+
+  const onFailure = (res)=>{
+    console.log("LOGIN failure!:",res)
+  }
 
 
   return (
@@ -58,6 +63,9 @@ const Login = () => {
         <GoogleLogin
         clientId={GOOGLE_CLIENTID}
         buttonText="Login with GOOGLE"
+        onSuccess={onSuccess}
+        onFailure = {onFailure}
+        cookiePolicy={'single_host_origin'}
         isSignedIn = {false}
         />
         {error && <span>{error.message}</span>}
